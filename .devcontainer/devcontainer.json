@@ -15,7 +15,8 @@
             "version": "lts",
             "nodeGypDependencies": true,
             "nvmInstallPath": "/usr/local/share/nvm"
-        }
+        },
+        "ghcr.io/devcontainers-community/features/tinygo": {}
     },
     "customizations": {
         "vscode": {

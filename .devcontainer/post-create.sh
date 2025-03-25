@@ -14,6 +14,7 @@ echo "Setting up Rust environment..."
 # This is already set up by the features, but we can add additional Rust tools if needed
 rustup component add clippy rustfmt
 cargo install cargo-watch cargo-expand
+rustup target add wasm32-wasip1
 
 echo "Installing TinyGo..."
 # The repository was added in the Dockerfile, now we install the package
