@@ -1,0 +1,32 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "editor.formatOnSave": true,
+        "editor.tabSize": 2,
+        "files.exclude": {
+            "**/.git": true,
+            "**/.svn": true,
+            "**/.hg": true,
+            "**/CVS": true,
+            "**/.DS_Store": true,
+            "**/*.js.map": true,
+            "node_modules": true
+        },
+        "terminal.integrated.env.linux": {
+            "PATH": "${env:PATH}:/usr/local/bin"
+        }
+    },
+    "extensions": {
+        "recommendations": [
+            "ms-vscode.vscode-typescript-next",
+            "dbaeumer.vscode-eslint",
+            "esbenp.prettier-vscode",
+            "ms-azuretools.vscode-docker",
+            "golang.go"
+        ]
+    }
+}
