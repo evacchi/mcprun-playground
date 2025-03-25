@@ -7,7 +7,15 @@
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/go:1": {}
+        "ghcr.io/devcontainers/features/go:1": {},
+        "ghcr.io/devcontainers/features/rust:1": {
+            "version": "latest"
+        },
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts",
+            "nodeGypDependencies": true,
+            "nvmInstallPath": "/usr/local/share/nvm"
+        }
     },
     "customizations": {
         "vscode": {
@@ -16,12 +24,20 @@
                 "dbaeumer.vscode-eslint",
                 "esbenp.prettier-vscode",
                 "ms-azuretools.vscode-docker",
-                "golang.go"
+                "golang.go",
+                "rust-lang.rust-analyzer",
+                "tamasfe.even-better-toml",
+                "serayuzgur.crates"
             ],
             "settings": {
                 "editor.formatOnSave": true,
                 "editor.defaultFormatter": "esbenp.prettier-vscode",
-                "terminal.integrated.defaultProfile.linux": "bash"
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "[rust]": {
+                    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+                    "editor.formatOnSave": true
+                },
+                "rust-analyzer.checkOnSave.command": "clippy"
             }
         }
     },
