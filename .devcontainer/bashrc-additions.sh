@@ -5,8 +5,10 @@ alias xtp-exts="xtp extension-points list"
 
 # MCP.run shortcuts
 alias mcp-login="~/mcp-login.sh"
-alias mcp-search="mcprun search"
-alias mcp-install="mcprun install"
+alias mcp-search="mcpx search"
+alias mcp-install="mcpx install"
+alias mcp-publish="xtp plugin push"
+alias mcp-servlet-lab="npx --yes -p @dylibso/mcpx@latest servlet-lab"
 
 # Rust shortcuts
 alias rs-build="cargo build"
@@ -16,11 +18,17 @@ alias rs-check="cargo check"
 alias rs-clippy="cargo clippy"
 alias rs-fmt="cargo fmt"
 alias rs-watch="cargo watch -x 'check --tests'"
+alias rs-wasm="wasm-pack build"
 
 # TypeScript shortcuts
 alias ts-build="tsc"
 alias ts-run="ts-node"
 alias ts-watch="tsc --watch"
+
+# WebAssembly helpers
+alias wasm-build="xtp plugin build"
+alias wasm-call="xtp plugin call"
+alias wasm-test="xtp plugin test"
 
 # Set colors for better readability
 export PS1="\[\033[01;32m\]\u@dev\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "

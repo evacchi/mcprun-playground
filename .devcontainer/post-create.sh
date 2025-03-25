@@ -4,16 +4,17 @@ set -e
 echo "Installing XTP CLI..."
 curl -s https://static.dylibso.com/cli/install.sh | sudo sh
 
-echo "Installing MCP.run CLI..."
-npm install -g @mcp/cli
+echo "Installing MCP.run CLI (mcpx)..."
+npm install -g @dylibso/mcpx
 
 echo "Setting up TypeScript environment..."
 npm install -g typescript ts-node
 
-echo "Setting up Rust environment..."
-# This is already set up by the features, but we can add additional Rust tools if needed
+echo "Setting up Rust environment with WebAssembly target..."
+# This is already set up by the features, but we add WebAssembly target and tools
+rustup target add wasm32-wasi wasm32-unknown-unknown
 rustup component add clippy rustfmt
-cargo install cargo-watch cargo-expand
+cargo install cargo-watch cargo-expand wasm-pack
 
 echo "Setting up environment..."
 
@@ -24,7 +25,7 @@ echo 'export PATH="$PATH:/usr/local/bin:$HOME/.cargo/bin"' >> ~/.bashrc
 cat > ~/mcp-login.sh << 'EOF'
 #!/bin/bash
 echo "Logging into MCP.run..."
-mcprun login
+mcpx login
 echo "Login complete! You can now use MCP.run tools."
 EOF
 
