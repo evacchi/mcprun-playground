@@ -15,6 +15,10 @@ echo "Setting up Rust environment..."
 rustup component add clippy rustfmt
 cargo install cargo-watch cargo-expand
 
+echo "Installing TinyGo..."
+# The repository was added in the Dockerfile, now we install the package
+sudo apt-get update && sudo apt-get install -y tinygo
+
 echo "Setting up environment..."
 
 # Add tools to the PATH
@@ -39,7 +43,33 @@ EOF
 
 chmod +x ~/xtp-login.sh
 
+# Create a convenience script for TinyGo example
+cat > ~/tinygo-hello.sh << 'EOF'
+#!/bin/bash
+mkdir -p ~/tinygo-examples/hello
+cat > ~/tinygo-examples/hello/main.go << 'GOCODE'
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello from TinyGo!")
+}
+GOCODE
+
+cd ~/tinygo-examples/hello
+echo "Building TinyGo example..."
+tinygo build -o hello main.go
+echo "Running TinyGo example..."
+./hello
+echo ""
+echo "TinyGo is working! You can find this example in ~/tinygo-examples/hello"
+EOF
+
+chmod +x ~/tinygo-hello.sh
+
 echo ""
 echo "Installation complete!"
 echo "To login to MCP.run, run: ~/mcp-login.sh"
 echo "For XTP token instructions, run: ~/xtp-login.sh"
+echo "To test TinyGo installation, run: ~/tinygo-hello.sh"
