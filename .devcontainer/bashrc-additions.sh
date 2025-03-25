@@ -20,6 +20,19 @@ alias rs-fmt="cargo fmt"
 alias rs-watch="cargo watch -x 'check --tests'"
 alias rs-wasm="wasm-pack build"
 
+# Go shortcuts
+alias go-build="go build"
+alias go-run="go run"
+alias go-test="go test"
+alias go-fmt="go fmt"
+
+# TinyGo shortcuts
+alias tgo-build="tinygo build"
+alias tgo-run="tinygo run"
+alias tgo-build-wasm="tinygo build -target wasm"
+alias tgo-build-wasi="tinygo build -target wasi"
+alias tgo-build-servlet="tinygo build -target wasi -o dist/plugin.wasm"
+
 # TypeScript shortcuts
 alias ts-build="tsc"
 alias ts-run="ts-node"
