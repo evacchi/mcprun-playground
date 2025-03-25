@@ -12,8 +12,8 @@ This repository is configured to work with GitHub Codespaces, providing a fully 
 
 The Codespace will automatically install:
 - XTP CLI for working with the XTP plugin system
-- MCP.run CLI for searching and using MCP.run servlets
-- Rust toolchain with Cargo, Clippy, and Rustfmt
+- MCP.run CLI (mcpx) for searching and using MCP.run servlets
+- Rust toolchain with Cargo, Clippy, and WebAssembly targets
 - TypeScript with compiler and ts-node
 - All necessary dependencies and development tools
 
@@ -35,6 +35,13 @@ After your Codespace is ready:
 - `mcp-login` - Log in to MCP.run
 - `mcp-search` - Search for MCP.run servlets
 - `mcp-install` - Install MCP.run servlets
+- `mcp-publish` - Publish a servlet (uses xtp plugin push)
+- `mcp-servlet-lab` - Test a servlet locally
+
+#### WebAssembly Tools
+- `wasm-build` - Build a WebAssembly plugin (xtp plugin build)
+- `wasm-call` - Call a WebAssembly plugin function (xtp plugin call)
+- `wasm-test` - Test a WebAssembly plugin (xtp plugin test)
 
 #### Rust Shortcuts
 - `rs-build` - Build Rust project (cargo build)
@@ -44,6 +51,7 @@ After your Codespace is ready:
 - `rs-clippy` - Run linter (cargo clippy)
 - `rs-fmt` - Format code (cargo fmt)
 - `rs-watch` - Watch for changes and check (cargo watch)
+- `rs-wasm` - Build as WebAssembly (wasm-pack build)
 
 #### TypeScript Shortcuts
 - `ts-build` - Build TypeScript (tsc)
@@ -54,15 +62,26 @@ After your Codespace is ready:
 
 After your Codespace is set up and you've authenticated with the necessary services, you can start developing:
 
-### For Rust development:
-1. Create a new Rust project: `cargo new my_project`
-2. Navigate to it: `cd my_project`
-3. Build and run it: `rs-build && rs-run`
+### For Rust WebAssembly Servlet:
+1. Create a servlet using the XTP CLI: 
+   ```
+   xtp plugin init --feature stub-with-code-samples --path my_servlet
+   ```
+2. Choose Rust when prompted
+3. Navigate to it: `cd my_servlet`
+4. Implement the functions in `src/lib.rs`
+5. Build it: `wasm-build`
+6. Test it: `wasm-call dist/plugin.wasm describe --wasi`
 
-### For TypeScript development:
-1. Create a new directory: `mkdir ts-project && cd ts-project`
-2. Initialize a project: `npm init -y`
-3. Create a tsconfig.json: `tsc --init`
-4. Create and run a TypeScript file: `ts-run your-file.ts`
+### For TypeScript Servlet:
+1. Create a servlet using the XTP CLI:
+   ```
+   xtp plugin init --feature stub-with-code-samples --path ts-servlet
+   ```
+2. Choose TypeScript when prompted
+3. Navigate to it: `cd ts-servlet`
+4. Implement the functions in `src/main.ts`
+5. Build it: `wasm-build`
+6. Test it locally with: `mcp-servlet-lab --servlet dist/plugin.wasm`
 
-You can use these tools in conjunction with XTP and MCP.run to build plugins and integrate with servlets.
+You can publish your servlet to MCP.run with `mcp-publish` once you've registered it at [mcp.run/publish](https://mcp.run/publish).
