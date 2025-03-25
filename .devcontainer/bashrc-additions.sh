@@ -22,6 +22,15 @@ alias ts-build="tsc"
 alias ts-run="ts-node"
 alias ts-watch="tsc --watch"
 
+# TinyGo shortcuts
+alias tgo-hello="~/tinygo-hello.sh"
+alias tgo-build="tinygo build"
+alias tgo-run="tinygo run"
+alias tgo-wasm="tinygo build -target wasm"
+alias tgo-list-targets="tinygo targets"
+alias tgo-version="tinygo version"
+alias tgo-info="tinygo info"
+
 # Set colors for better readability
 export PS1="\[\033[01;32m\]\u@dev\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
