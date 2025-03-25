@@ -14,6 +14,7 @@ The Codespace will automatically install:
 - XTP CLI for working with the XTP plugin system
 - MCP.run CLI (mcpx) for searching and using MCP.run servlets
 - Rust toolchain with Cargo, Clippy, and WebAssembly targets
+- Go with TinyGo for WebAssembly compilation
 - TypeScript with compiler and ts-node
 - All necessary dependencies and development tools
 
@@ -53,6 +54,19 @@ After your Codespace is ready:
 - `rs-watch` - Watch for changes and check (cargo watch)
 - `rs-wasm` - Build as WebAssembly (wasm-pack build)
 
+#### Go Shortcuts
+- `go-build` - Build Go project (go build)
+- `go-run` - Run Go project (go run)
+- `go-test` - Run tests (go test)
+- `go-fmt` - Format code (go fmt)
+
+#### TinyGo Shortcuts
+- `tgo-build` - Build with TinyGo (tinygo build)
+- `tgo-run` - Run with TinyGo (tinygo run)
+- `tgo-build-wasm` - Build WebAssembly (tinygo build -target wasm)
+- `tgo-build-wasi` - Build WASI (tinygo build -target wasi)
+- `tgo-build-servlet` - Build servlet (tinygo build -target wasi -o dist/plugin.wasm)
+
 #### TypeScript Shortcuts
 - `ts-build` - Build TypeScript (tsc)
 - `ts-run` - Run TypeScript directly (ts-node)
@@ -73,6 +87,17 @@ After your Codespace is set up and you've authenticated with the necessary servi
 5. Build it: `wasm-build`
 6. Test it: `wasm-call dist/plugin.wasm describe --wasi`
 
+### For Go WebAssembly Servlet:
+1. Create a servlet using the XTP CLI:
+   ```
+   xtp plugin init --feature stub-with-code-samples --path go-servlet
+   ```
+2. Choose Go when prompted
+3. Navigate to it: `cd go-servlet`
+4. Implement the functions in `main.go`
+5. Build it with TinyGo: `tgo-build-servlet`
+6. Test it: `wasm-call dist/plugin.wasm describe --wasi`
+
 ### For TypeScript Servlet:
 1. Create a servlet using the XTP CLI:
    ```
@@ -85,3 +110,15 @@ After your Codespace is set up and you've authenticated with the necessary servi
 6. Test it locally with: `mcp-servlet-lab --servlet dist/plugin.wasm`
 
 You can publish your servlet to MCP.run with `mcp-publish` once you've registered it at [mcp.run/publish](https://mcp.run/publish).
+
+## Sample Go Servlet
+
+A sample Go servlet is provided in `~/samples/go-servlet/main.go`. To build it:
+
+1. Navigate to it: `cd ~/samples/go-servlet`
+2. Build it with TinyGo: `tgo-build-servlet`
+3. Test it: `wasm-call dist/plugin.wasm describe --wasi`
+4. Try calling the greet function: 
+   ```
+   wasm-call dist/plugin.wasm call --input='{"params":{"name":"greet","arguments":{"name":"YourName"}}}' --wasi
+   ```
