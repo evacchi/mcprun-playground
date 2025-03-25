@@ -7,7 +7,11 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     wget \
     zip \
     unzip \
-    build-essential
+    build-essential \
+    pkg-config \
+    libssl-dev \
+    llvm \
+    clang
 
 # Set up shell configuration
 COPY .devcontainer/bashrc-additions.sh /tmp/

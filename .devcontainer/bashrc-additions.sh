@@ -8,6 +8,20 @@ alias mcp-login="~/mcp-login.sh"
 alias mcp-search="mcprun search"
 alias mcp-install="mcprun install"
 
+# Rust shortcuts
+alias rs-build="cargo build"
+alias rs-run="cargo run"
+alias rs-test="cargo test"
+alias rs-check="cargo check"
+alias rs-clippy="cargo clippy"
+alias rs-fmt="cargo fmt"
+alias rs-watch="cargo watch -x 'check --tests'"
+
+# TypeScript shortcuts
+alias ts-build="tsc"
+alias ts-run="ts-node"
+alias ts-watch="tsc --watch"
+
 # Set colors for better readability
 export PS1="\[\033[01;32m\]\u@dev\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 
