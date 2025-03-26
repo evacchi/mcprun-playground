@@ -1,4 +1,4 @@
-# mcprun-playground
+# mcp.run playground
 
 ## Development Environment
 
