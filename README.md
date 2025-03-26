@@ -11,9 +11,9 @@ This repository is configured to work with GitHub Codespaces, providing a fully 
 3. Click "Create codespace on main"
 
 The Codespace will automatically install:
-- XTP CLI for working with the XTP plugin system
+- [XTP CLI for working with the XTP plugin system](https://docs.xtp.dylibso.com/docs/cli/) (to create your own servlets)
 - Rust toolchain with Cargo, Clippy, and Rustfmt
-- TinyGo for lightweight Go compilation targeting WebAssembly
+- TinyGo to compile Go into WebAssembly
 - TypeScript with compiler and ts-node
 - All necessary dependencies and development tools
 
