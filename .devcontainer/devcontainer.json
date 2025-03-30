@@ -1,9 +1,6 @@
 {
-    "name": "XTP & MCP.run Development Environment",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": ".."
-    },
+    "name": "MCP.run Development Environment",
+    "image": "ghcr.io/evacchi/mcprun-dev:latest",
     "features": {
         "ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -41,6 +38,16 @@
             }
         }
     },
-    "postCreateCommand": "sh .devcontainer/post-create.sh",
-    "remoteUser": "node"
+    "remoteUser": "node",
+    "forwardPorts": [3000, 3001],
+    "portsAttributes": {
+        "3000": {
+            "label": "Dev Server",
+            "onAutoForward": "notify"
+        },
+        "3001": {
+            "label": "Alt Dev Server",
+            "onAutoForward": "notify"
+        }
+    }
 }
