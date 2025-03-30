@@ -1,12 +1,7 @@
 {
   "name": "MCP.run Development Environment",
   "image": "mcr.microsoft.com/devcontainers/go",
-  "features": {
-    "ghcr.io/devcontainers-community/features/tinygo:1": {
-      "version": "0.37.0"
-    }
-  },
-  "postCreateCommand": "curl -s https://static.dylibso.com/cli/install.sh | bash",
+  "postCreateCommand": "wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb && sudo dpkg -i tinygo_0.37.0_amd64.deb && curl -s https://static.dylibso.com/cli/install.sh | bash",
   "customizations": {
     "vscode": {
       "extensions": [
