@@ -1,57 +1,48 @@
 {
-    "name": "MCP.run Development Environment",
-    "features": {
-        "ghcr.io/devcontainers/features/git:1": {},
-        "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/go:1": {
-            "version": "1.24.1"
-        },
-        "ghcr.io/devcontainers/features/rust:1": {
-            "version": "latest",
-            "profile": "minimal",
-            "components": "rustfmt,clippy"
-        },
-        "ghcr.io/devcontainers/features/node:1": {
-            "version": "lts"
-        },
-        "ghcr.io/devcontainers-community/features/tinygo:1": {
-            "version": "0.37.0"
-        }
-    },
-    "postCreateCommand": "rustup target add wasm32-wasip1 && curl -s https://static.dylibso.com/cli/install.sh | bash && npm install -g typescript ts-node nodemon",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "ms-vscode.vscode-typescript-next",
-                "dbaeumer.vscode-eslint",
-                "esbenp.prettier-vscode",
-                "ms-azuretools.vscode-docker",
-                "golang.go",
-                "rust-lang.rust-analyzer",
-                "tamasfe.even-better-toml",
-                "serayuzgur.crates"
-            ],
-            "settings": {
-                "editor.formatOnSave": true,
-                "editor.defaultFormatter": "esbenp.prettier-vscode",
-                "terminal.integrated.defaultProfile.linux": "bash",
-                "[rust]": {
-                    "editor.defaultFormatter": "rust-lang.rust-analyzer",
-                    "editor.formatOnSave": true
-                },
-                "rust-analyzer.checkOnSave.command": "clippy"
-            }
-        }
-    },
-    "forwardPorts": [3000, 3001],
-    "portsAttributes": {
-        "3000": {
-            "label": "Dev Server",
-            "onAutoForward": "notify"
-        },
-        "3001": {
-            "label": "Alt Dev Server",
-            "onAutoForward": "notify"
-        }
+  "name": "MCP.run Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/universal:linux",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/rust:1": {
+      "version": "latest",
+      "profile": "minimal",
+      "components": "rustfmt,clippy"
     }
+  },
+  "postCreateCommand": "rustup target add wasm32-wasip1 && curl -s https://static.dylibso.com/cli/install.sh | bash && npm install -g typescript ts-node nodemon",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "golang.go",
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "[rust]": {
+          "editor.defaultFormatter": "rust-lang.rust-analyzer",
+          "editor.formatOnSave": true
+        },
+        "rust-analyzer.checkOnSave.command": "clippy"
+      }
+    }
+  },
+  "forwardPorts": [3000, 3001],
+  "portsAttributes": {
+    "3000": {
+      "label": "Dev Server",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "Alt Dev Server",
+      "onAutoForward": "notify"
+    }
+  }
 }
