@@ -50,7 +50,7 @@ RUN apt-get update && \
     wget && \
     wget -q -O - https://sh.rustup.rs | sh -s -- -y --no-modify-path --profile minimal && \
     rustup component add clippy rustfmt && \
-    rustup target add wasm32-wasi && \
+    rustup target add wasm32-wasip1 && \
     cargo install cargo-watch cargo-expand && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
