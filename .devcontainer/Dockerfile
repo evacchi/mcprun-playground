@@ -17,17 +17,17 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     software-properties-common
 
 # Install Go
-RUN curl -OL https://go.dev/dl/go1.21.0.linux-amd64.tar.gz \
-    && tar -C /usr/local -xzf go1.21.0.linux-amd64.tar.gz \
-    && rm go1.21.0.linux-amd64.tar.gz
+RUN curl -OL https://go.dev/dl/go1.24.1.linux-amd64.tar.gz \
+    && tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz \
+    && rm go1.24.1.linux-amd64.tar.gz
 
 # Install XTP CLI
 RUN curl -s https://static.dylibso.com/cli/install.sh | bash
 
 # Install TinyGo
-RUN curl -LO https://github.com/tinygo-org/tinygo/releases/download/v0.30.0/tinygo_0.30.0_amd64.deb \
-    && dpkg -i tinygo_0.30.0_amd64.deb \
-    && rm tinygo_0.30.0_amd64.deb
+RUN curl -LO https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb \
+    && dpkg -i tinygo_0.37.0_amd64.deb \
+    && rm tinygo_0.37.0_amd64.deb
 
 # Install TypeScript tools
 RUN npm install -g typescript ts-node nodemon
