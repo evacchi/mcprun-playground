@@ -37,15 +37,20 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH="/go"
 ENV PATH="${PATH}:${GOPATH}/bin"
 
-# Install Rust
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV RUSTUP_HOME="/root/.rustup"
-ENV CARGO_HOME="/root/.cargo"
-ENV PATH="${PATH}:${CARGO_HOME}/bin"
-
-# Configure Rust
-SHELL ["/bin/bash", "-c"]
-RUN . "${CARGO_HOME}/env" && \
+# Install Rust and components
+ENV RUSTUP_HOME=/usr/local/rustup \
+    CARGO_HOME=/usr/local/cargo \
+    PATH=/usr/local/cargo/bin:$PATH
+    
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates \
+    gcc \
+    libc6-dev \
+    wget && \
+    wget -q -O - https://sh.rustup.rs | sh -s -- -y --no-modify-path --profile minimal && \
     rustup component add clippy rustfmt && \
+    rustup target add wasm32-wasi && \
     cargo install cargo-watch cargo-expand && \
-    rustup target add wasm32-wasi
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
