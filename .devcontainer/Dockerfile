@@ -44,7 +44,8 @@ ENV CARGO_HOME="/root/.cargo"
 ENV PATH="${PATH}:${CARGO_HOME}/bin"
 
 # Configure Rust
-RUN source "${CARGO_HOME}/env" && \
+SHELL ["/bin/bash", "-c"]
+RUN . "${CARGO_HOME}/env" && \
     rustup component add clippy rustfmt && \
     cargo install cargo-watch cargo-expand && \
     rustup target add wasm32-wasi
