@@ -1,0 +1,21 @@
+{
+  "name": "TypeScript",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+  "postCreateCommand": "bash post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "tamasfe.even-better-toml",
+        "fill-labs.dependi"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  }
+}

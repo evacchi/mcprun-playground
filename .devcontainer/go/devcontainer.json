@@ -6,7 +6,8 @@
     "vscode": {
       "extensions": [
         "golang.go",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "fill-labs.dependi"
       ],
       "settings": {
         "editor.formatOnSave": true,
