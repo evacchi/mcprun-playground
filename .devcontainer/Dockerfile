@@ -37,12 +37,14 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 ENV GOPATH="/go"
 ENV PATH="${PATH}:${GOPATH}/bin"
 
-# Set Rust environment variables (Rust is managed by devcontainer features)
-ENV RUSTUP_HOME="/usr/local/rustup"
-ENV CARGO_HOME="/usr/local/cargo"
+# Install Rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV RUSTUP_HOME="/root/.rustup"
+ENV CARGO_HOME="/root/.cargo"
 ENV PATH="${PATH}:${CARGO_HOME}/bin"
 
 # Configure Rust
-RUN rustup component add clippy rustfmt && \
+RUN source "${CARGO_HOME}/env" && \
+    rustup component add clippy rustfmt && \
     cargo install cargo-watch cargo-expand && \
     rustup target add wasm32-wasi
