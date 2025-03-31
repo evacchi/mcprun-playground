@@ -1,7 +1,7 @@
 {
   "name": "TypeScript",
   "image": "mcr.microsoft.com/devcontainers/typescript-node",
-  "postCreateCommand": "bash typescript/post-create.sh",
+  "postCreateCommand": "bash .devcontainer/typescript/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [
