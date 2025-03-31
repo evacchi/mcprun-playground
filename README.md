@@ -15,16 +15,8 @@ This repository is configured to work with GitHub Codespaces, providing a fully 
 
 ### Using GitHub Codespaces
 
-1. Click the green "Code" button on the repository page
-2. Select the "Codespaces" tab
-3. Click "Create codespace on main"
-
-The Codespace will automatically install:
-- [XTP CLI for working with the XTP plugin system](https://docs.xtp.dylibso.com/docs/cli/) (to create your own servlets)
-- Rust toolchain with Cargo, Clippy, and Rustfmt
-- TinyGo to compile Go into WebAssembly
-- TypeScript with compiler and ts-node
-- All necessary dependencies and development tools
+- Open the [Getting Started](getting-started) folder for your favorite language
+- Click the "Open in GitHub Codespaces" button 
 
 ## Getting Started
 
