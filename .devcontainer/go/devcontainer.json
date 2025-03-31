@@ -1,7 +1,7 @@
 {
   "name": "Go",
   "image": "mcr.microsoft.com/devcontainers/go",
-  "postCreateCommand": "bash post-create.sh",
+  "postCreateCommand": "bash go/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [

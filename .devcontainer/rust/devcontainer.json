@@ -1,7 +1,7 @@
 {
   "name": "Rust",
   "image": "mcr.microsoft.com/devcontainers/rust",
-  "postCreateCommand": "bash post-create.sh",
+  "postCreateCommand": "bash rust/post-create.sh",
   "customizations": {
     "vscode": {
       "extensions": [
