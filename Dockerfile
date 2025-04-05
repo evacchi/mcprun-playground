@@ -13,7 +13,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 SHELL ["/bin/bash", "-c"] 
 # Add Rust WASM targets
 RUN source "$HOME/.cargo/env" && \
-    rustup target add wasm32-unknown-unknown wasm32-wasi wasm32-wasip1
+    rustup target add wasm32-unknown-unknown wasm32-wasip1
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
