@@ -7,9 +7,10 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Rust
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
+# Install Rust and Cargo
+RUN apt-get update && apt-get install -y rustup && rm -rf /var/lib/apt/lists/*
+RUN rustup install stable
+RUN rustup default stable
 # Add Rust WASM targets
 RUN rustup target add wasm32-unknown-unknown wasm32-wasi wasm32-wasip1
 
