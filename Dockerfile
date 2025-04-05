@@ -28,9 +28,16 @@ RUN curl -L https://go.dev/dl/go1.24.0.linux-amd64.tar.gz -o go.tar.gz \
 ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Install TinyGo
-RUN wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb \
-    && dpkg -i tinygo_0.37.0_amd64.deb \
-    && rm tinygo_0.37.0_amd64.deb
+RUN ARCH=$(dpkg --print-architecture) && \
+    if [ "$ARCH" = "arm64" ]; then \
+      wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_arm64.deb \
+      && dpkg -i tinygo_0.37.0_arm64.deb \
+      && rm tinygo_0.37.0_arm64.deb; \
+    else \
+      wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb \
+      && dpkg -i tinygo_0.37.0_amd64.deb \
+      && rm tinygo_0.37.0_amd64.deb; \
+    fi
 
 # Install extism-js
 RUN curl -L https://raw.githubusercontent.com/extism/js-pdk/main/install.sh | bash
