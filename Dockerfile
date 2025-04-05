@@ -8,11 +8,12 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Rust and Cargo
-RUN apt-get update && apt-get install -y rustup && rm -rf /var/lib/apt/lists/*
-RUN rustup install stable
-RUN rustup default stable
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+SHELL ["/bin/bash", "-c"] 
 # Add Rust WASM targets
-RUN rustup target add wasm32-unknown-unknown wasm32-wasi wasm32-wasip1
+RUN source "$HOME/.cargo/env" && \
+    rustup target add wasm32-unknown-unknown wasm32-wasi wasm32-wasip1
 
 # Install Node.js
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
