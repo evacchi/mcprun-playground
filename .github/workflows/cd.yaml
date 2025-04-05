@@ -1,0 +1,57 @@
+name: Build and Push
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          targets: wasm32-unknown-unknown, wasm32-wasi
+
+      - name: Add wasm32-wasip1 target (can be moved to list above when the target is added to toolchain action above)
+        run: rustup target add wasm32-wasip1
+
+      - name: Install just
+        uses: extractions/setup-just@v1
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.24"
+
+      - name: Install TinyGo
+        run: |
+          wget https://github.com/tinygo-org/tinygo/releases/download/v0.37.0/tinygo_0.37.0_amd64.deb
+          sudo dpkg -i tinygo_0.37.0_amd64.deb
+
+      - name: Install extism-js
+        run: |
+          curl -L https://raw.githubusercontent.com/extism/js-pdk/main/install.sh | bash
+
+      - name: Install extism-py and uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          curl -Ls https://raw.githubusercontent.com/extism/python-pdk/main/install.sh | bash
+
+      - name: Install xtp CLI
+        run: |
+          curl -L https://static.dylibso.com/cli/install.sh -s | bash
+
+      - name: Publish all the servlets
+        env:
+          XTP_TOKEN: ${{ secrets.XTP_TOKEN }}
