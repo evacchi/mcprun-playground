@@ -1,7 +1,6 @@
 {
   "name": "Go",
-  "image": "mcr.microsoft.com/devcontainers/go",
-  "postCreateCommand": "bash .devcontainer/go/post-create.sh",
+  "image": "ghcr.io/dylibso/mcprun-playground:latest",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,5 +13,6 @@
         "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
-  }
+  },
+  "remoteUser": "vscode"
 }

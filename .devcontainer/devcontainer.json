@@ -1,19 +1,15 @@
 {
-  "name": "TypeScript",
+  "name": "MCPRun Playground",
   "image": "ghcr.io/dylibso/mcprun-playground:latest",
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.vscode-typescript-next",
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
         "tamasfe.even-better-toml",
         "fill-labs.dependi"
       ],
       "settings": {
         "editor.formatOnSave": true,
-        "terminal.integrated.defaultProfile.linux": "bash",
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
   },
