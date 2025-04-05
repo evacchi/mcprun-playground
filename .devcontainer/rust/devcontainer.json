@@ -1,7 +1,6 @@
 {
   "name": "Rust",
-  "image": "mcr.microsoft.com/devcontainers/rust",
-  "postCreateCommand": "bash .devcontainer/rust/post-create.sh",
+  "image": "ghcr.io/dylibso/mcprun-playground:latest",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -16,5 +15,6 @@
         "rust-analyzer.checkOnSave.command": "clippy"
       }
     }
-  }
+  },
+  "remoteUser": "vscode"
 }
